@@ -53,9 +53,10 @@ window.onload = function () {
       for(let i of parcelValues) {
          let parcelFieldName = i.parentNode.previousElementSibling.innerHTML;
          let parcelFieldValue = i.value;
+         let unitValue =  i.nextElementSibling.innerHTML;
          if(i.value !== ''){
             let parentCount = i.parentNode.parentNode.parentNode.parentNode.className;
-            console.log(`PARCELS: ${parentCount} ${parcelFieldName} ${parcelFieldValue}`);
+            console.log(`PARCELS: ${parentCount} ${parcelFieldName} ${parcelFieldValue} ${unitValue}`);
          }
       }
       // Pallet values
@@ -63,9 +64,10 @@ window.onload = function () {
       for(let i of palletValues) {
          let palletFieldName = i.parentNode.previousElementSibling.innerHTML;
          let palletFieldValue = i.value;
+         let unitValue =  i.nextElementSibling.innerHTML;
          if(i.value !== '') {
             let parentCount = i.parentNode.parentNode.parentNode.parentNode.className;
-            console.log(`PALLETS: ${parentCount} ${palletFieldName} ${palletFieldValue}`);
+            console.log(`PALLETS: ${parentCount} ${palletFieldName} ${palletFieldValue} ${unitValue}`);
          }
       }
    };
