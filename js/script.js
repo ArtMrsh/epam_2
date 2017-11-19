@@ -17,10 +17,10 @@ window.onload = function () {
    // Switching item type initialization
    switchBoxType();
 
-   const addBtn = document.querySelector(".add-item");
-   const removeBtn = document.querySelector(".remove-item");
-   const itemsContainer = document.querySelector(".items-wrap");
-   const firstItem = document.querySelectorAll(".item")[0];
+   const addBtn = document.querySelector(".add-item"),
+         removeBtn = document.querySelector(".remove-item"),
+         itemsContainer = document.querySelector(".items-wrap"),
+         firstItem = document.querySelectorAll(".item")[0];
    let count = 3;
 
    // Adding item
@@ -28,7 +28,7 @@ window.onload = function () {
       e.preventDefault();
       count++;
       let newItem = firstItem.cloneNode(true);
-      newItem.className = `item ${count}`;
+      newItem.dataset.number = count;
       itemsContainer.appendChild(newItem);
       switchBoxType();
    };
@@ -45,31 +45,23 @@ window.onload = function () {
    addBtn.addEventListener("click", addItem);
    removeBtn.addEventListener("click", removeItem);
 
+   // Showing values
    const showBtn = document.querySelector(".show-items");
-   function showItemsArr(e) {
+
+   function showValues(e) {
       e.preventDefault();
-      // parcelValues
-      let parcelValues = document.querySelectorAll(".parcel-container .sign-field");
-      for(let i of parcelValues) {
-         let parcelFieldName = i.parentNode.previousElementSibling.innerHTML;
-         let parcelFieldValue = i.value;
+      console.log("---------------------------------------------------");
+      let signField = document.querySelectorAll(".sign-field");
+      for(let i of signField) {
+         let boxType = i.parentNode.parentNode.parentNode.dataset.type.toUpperCase();
+         let fieldName = i.parentNode.previousElementSibling.innerHTML;
+         let fieldValue = i.value;
          let unitValue =  i.nextElementSibling.innerHTML;
          if(i.value !== ''){
-            let parentCount = i.parentNode.parentNode.parentNode.parentNode.className;
-            console.log(`PARCELS: ${parentCount} ${parcelFieldName} ${parcelFieldValue} ${unitValue}`);
-         }
-      }
-      // Pallet values
-      let palletValues = document.querySelectorAll(".pallet-container .sign-field");
-      for(let i of palletValues) {
-         let palletFieldName = i.parentNode.previousElementSibling.innerHTML;
-         let palletFieldValue = i.value;
-         let unitValue =  i.nextElementSibling.innerHTML;
-         if(i.value !== '') {
-            let parentCount = i.parentNode.parentNode.parentNode.parentNode.className;
-            console.log(`PALLETS: ${parentCount} ${palletFieldName} ${palletFieldValue} ${unitValue}`);
+            let itemNumber = i.parentNode.parentNode.parentNode.parentNode.dataset.number;
+            console.log(`${boxType} #${itemNumber} ${fieldName} ${fieldValue} ${unitValue}`);
          }
       }
    };
-   showBtn.addEventListener("click", showItemsArr);
+   showBtn.addEventListener("click", showValues);
 };
