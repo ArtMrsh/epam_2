@@ -18,14 +18,14 @@ window.onload = function () {
    switchBoxType();
 
    const addBtn = document.querySelector(".add-item"),
-         removeBtn = document.querySelector(".remove-item"),
-         itemsContainer = document.querySelector(".items-wrap"),
-         firstItem = document.querySelectorAll(".item")[0];
+         removeBtn = document.querySelector(".remove-item");
    let count = 3;
 
    // Adding item
    function addItem (e) {
       e.preventDefault();
+      const itemsContainer = document.querySelector(".items-wrap");
+      const firstItem = document.querySelectorAll(".item")[0];
       count++;
       let newItem = firstItem.cloneNode(true);
       newItem.dataset.number = count;
@@ -50,13 +50,13 @@ window.onload = function () {
 
    function showValues(e) {
       e.preventDefault();
-      console.log("---------------------------------------------------");
-      let signField = document.querySelectorAll(".sign-field");
-      for(let i of signField) {
-         let boxType = i.parentNode.parentNode.parentNode.dataset.type.toUpperCase();
-         let fieldName = i.parentNode.previousElementSibling.innerHTML;
-         let fieldValue = i.value;
-         let unitValue =  i.nextElementSibling.innerHTML;
+      console.clear();
+      let valueContainers = document.querySelectorAll(".value-field");
+      for(let i of valueContainers) {
+         let boxType = i.parentNode.parentNode.parentNode.dataset.type.toUpperCase(),
+             fieldName = i.parentNode.previousElementSibling.innerHTML,
+             fieldValue = i.value,
+             unitValue =  i.nextElementSibling.innerHTML;
          if(i.value !== ''){
             let itemNumber = i.parentNode.parentNode.parentNode.parentNode.dataset.number;
             console.log(`${boxType} #${itemNumber} ${fieldName} ${fieldValue} ${unitValue}`);
