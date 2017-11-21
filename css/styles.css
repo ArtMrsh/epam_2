@@ -229,7 +229,7 @@ input[type="checkbox"]:checked + .switcher:before {
 	display: none;
 }
 .value {
-	margin-bottom: 20px;
+	margin: 0 15px 20px 15px;
 }
 .value-title {
 	color: #000;

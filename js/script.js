@@ -51,6 +51,11 @@ window.onload = function () {
    function showValues(e) {
       e.preventDefault();
       console.clear();
+      let sendCountry = document.querySelector(".sender").value,
+          recipientCountry = document.querySelector(".recipient").value,
+          sendAdress = document.querySelector(".send-adress").value,
+          recipientAdress = document.querySelector(".recipient-adress").value;
+      console.log(`Sender: ${sendCountry}, ${sendAdress} -  Recipient: ${recipientCountry}, ${recipientAdress}`);
       let valueContainers = document.querySelectorAll(".value-field");
       for(let i of valueContainers) {
          let boxType = i.parentNode.parentNode.parentNode.dataset.type.toUpperCase(),
